@@ -8,14 +8,14 @@
 - Teste do ambiente de desenvolvimento
 
 
-|Criar projeto Java no VSCode 
-|Utilizando com ferramenta de build o Maven
-|Sem Archetype
-|Com group ID como com.[seunome] (Ex: com.ramyres)
-|Como nome serializejson
-|Adicione a dependência gson no arquivo pom.xml (https://mvnrepository.com/artifact/com.google.code.gson/gson/2.13.2)
-|Escreva uma classe Pessoa(string name, int idade)
-|Na classe Main no método main adicione a serialização utilizando o gson.
-|Adicione na raiz do projeto um arquivo README.md e adicione estas instruções.
-|Versione o projeto no Github, criando um repositório público, e
-|Envie o link do repositório.
+- Criar projeto Java no VSCode 
+- Utilizando com ferramenta de build o Maven
+- Sem Archetype
+- Com group ID como com.[seunome] (Ex: com.ramyres)
+- Como nome serializejson
+- Adicione a dependência gson no arquivo pom.xml (https://mvnrepository.com/artifact/com.google.code.gson/gson/2.13.2)
+- Escreva uma classe Pessoa(string name, int idade)
+-  Na classe Main no método main adicione a serialização utilizando o gson.
+- Adicione na raiz do projeto um arquivo README.md e adicione estas instruções.
+- Versione o projeto no Github, criando um repositório público, e
+- Envie o link do repositório.
