@@ -3,203 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marcus Vinícius de Oliveira Rodrigues</title>
+    <title>Marcus Vinícius | Dev Java</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Estilos Globais */
+        /* RESET PADRÃO [00:02:24] */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
         :root {
-            --primary-color: #0ea5e9; /* Azul Tech */
-            --bg-body: #0f172a;      /* Azul Profundo */
-            --bg-card: #1e293b;      /* Cinza Azulado */
-            --text-main: #f8fafc;
-            --text-secondary: #94a3b8;
+            --bg: #0b0e14;
+            --surface: #161b22;
+            --primary: #a855f7;
+            --secondary: #06b6d4;
+            --text: #f1f5f9;
+            --text-dim: #94a3b8;
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-main);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
             line-height: 1.6;
-            margin: 0;
-            padding: 0;
         }
 
-        /* Cabeçalho */
-        header {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            padding: 3rem 1rem;
-            text-align: center;
-            border-bottom: 3px solid var(--primary-color);
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.2rem;
-            color: var(--primary-color);
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
+        /* HEADER FLEXBOX [00:03:13] */
+        .header {
+            background: #000;
+            padding: 1.5rem 8%;
             display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            border-bottom: 2px solid var(--primary);
         }
 
-        nav a {
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 500;
+        .nav-socials {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-socials a {
+            font-size: 1.2rem;
             transition: 0.3s;
-            padding: 5px 10px;
-            border-radius: 4px;
         }
 
-        nav a:hover {
-            background-color: var(--primary-color);
-            color: #fff;
-        }
+        .nav-socials a:hover { color: var(--secondary); }
 
-        /* Layout */
-        main {
-            max-width: 900px;
-            margin: 2rem auto;
+        /* GRID PRINCIPAL [00:14:16] */
+        .main-grid {
+            max-width: 1100px;
+            margin: 3rem auto;
             padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
         }
 
-        section, aside {
-            background-color: var(--bg-card);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        .card {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 4px;
+            border: 1px solid #30363d;
         }
 
-        h2 {
-            color: var(--primary-color);
-            border-bottom: 1px solid #334155;
-            padding-bottom: 10px;
-            margin-top: 0;
+        /* Ocupando 2 colunas no Grid [00:19:07] */
+        .bio { 
+            grid-column: span 2; 
+            border-left: 6px solid var(--primary);
         }
 
-        /* Projetos e Formação */
-        article {
-            background: rgba(15, 23, 42, 0.5);
-            padding: 1rem;
-            border-radius: 6px;
-            margin-bottom: 1rem;
-            border-left: 4px solid var(--primary-color);
-        }
-
-        article h3 {
-            margin-top: 0;
-            color: #e2e8f0;
-        }
-
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Habilidades */
-        ul {
-            column-count: 2; /* Divide a lista em duas colunas */
-            column-gap: 20px;
-        }
-
-        @media (max-width: 600px) {
-            ul { column-count: 1; }
-        }
-
-        /* Formulário */
-        form {
+        .sidebar { 
+            background: #0f172a;
+            border-top: 6px solid var(--secondary);
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 1rem;
         }
 
-        input, textarea {
-            width: 100%;
-            padding: 12px;
-            border-radius: 4px;
-            border: 1px solid #334155;
-            background-color: #0f172a;
-            color: white;
-            box-sizing: border-box;
+        /* SKILLS AUTO-LAYOUT [00:14:43] */
+        .skills-grid {
+            grid-column: span 3;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
         }
 
-        button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: 0.3s;
-        }
-
-        button:hover {
-            filter: brightness(1.2);
-        }
-
-        /* Rodapé */
-        footer {
+        .skill-item {
+            background: #000;
+            padding: 1rem;
             text-align: center;
-            padding: 2rem;
-            color: var(--text-secondary);
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        /* BOTÕES */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 0.8rem 1.2rem;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: 0.3s;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        .btn-github { background: var(--primary); color: #fff; }
+        .btn-linkedin { background: transparent; border: 1px solid #0077b5; color: #0077b5; }
+        .btn-linkedin:hover { background: #0077b5; color: #fff; }
+
+        @media (max-width: 850px) {
+            .main-grid { grid-template-columns: 1fr; }
+            .bio, .skills-grid { grid-column: span 1; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Marcus Vinicius de Oliveira Rodrigues</h1>
-        <p><strong>Desenvolvedor Java | Estudante de ADS</strong></p>
+    <header class="header">
+        <div style="font-weight: 900; letter-spacing: 1px;">MARCUS VINÍCIUS</div>
         <nav>
-            <ul>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#formacao">Formação</a></li>
-                <li><a href="#habilidades">Habilidades</a></li>
-                <li><a href="#projetos">Projetos</a></li>
-                <li><a href="#contato">Contato</a></li>
+            <ul class="nav-socials">
+                <li><a href="https://github.com/Mrc0345" target="_blank" title="GitHub"><i class="fab fa-github"></i></a></li>
+                <li><a href="https://www.linkedin.com/feed/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section id="sobre">
-            <h2>Sobre Mim</h2>
-            <p>Estudante de Análise e Desenvolvimento de Sistemas, buscando evoluir em desenvolvimento de Software e soluções backend eficientes.</p>
-            <p><strong>Objetivo:</strong> Atuar como Desenvolvedor Java Júnior ou Estagiário, contribuindo com projetos escaláveis.</p>
+    <main class="main-grid">
+        
+        <section class="card bio">
+            <h1 style="margin-bottom: 1rem;">Marcus Vinícius</h1>
+            <p>Desenvolvedor focado no ecossistema <strong>Java e Spring Boot</strong>. Atualmente cursando ADS em <strong>Goiânia</strong>, com foco em arquitetura de microserviços e alta performance no backend.</p>
+            <p style="margin-top: 1rem; color: var(--text-dim);">Especialista em transformar requisitos complexos em sistemas escaláveis e seguros.</p>
         </section>
 
-        <section id="formacao">
-            <h2>Formação Acadêmica</h2>
-            <article>
-                <h3>Análise e Desenvolvimento de Sistemas</h3>
-                <p>Instituição: Faculdade de Tecnologia</p>
-                <p>Previsão de conclusão: 2026</p>
-            </article>
-        </section>
+        <aside class="card sidebar">
+            <h3 style="color: var(--secondary);"><i class="fas fa-location-dot"></i> Goiânia, GO</h3>
+            <p style="font-size: 0.9rem; color: var(--text-dim);">Conecte-se comigo para parcerias e projetos backend:</p>
+            
+            <a href="https://github.com/Mrc0345" target="_blank" class="btn btn-github">
+                <i class="fab fa-github"></i> Repositórios
+            </a>
+            
+            <a href="https://www.linkedin.com/feed/" target="_blank" class="btn btn-linkedin">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+        </aside>
 
-        <section id="habilidades">
-            <h2>Habilidades</h2>
-            <ul>
-                <li>Java & Spring Boot</li>
-                <li>JavaScript</li>
-                <li>Microserviços</li>
-                <li>MySQL & PostgreSQL</li>
-                <li>RabbitMQ</li>
-                <li>Docker & Linux</li>
-                <li>Git</li>
-                <li>Trabalho em equipe</li>
-            </ul>
-        </section>
+        <div class="skills-grid">
+            <div class="skill-item">JAVA 17+</div>
+            <div class="skill-item">SPRING BOOT</div>
+            <div class="skill-item">POSTGRESQL</div>
+            <div class="skill-item">MYSQL</div>
+            <div class="skill-item">RABBITMQ</div>
+            <div class="skill-item">JAVASCRIPT</div>
+        </div>
 
-        <section id="projetos">
-            <h2>Projetos</h2>
+    </main>
+
+    <footer style="text-align: center; padding: 4rem; color: var(--text-dim); border-top: 1px solid #334155;">
+        Marcus Vinícius | 2026
+    </footer>
+
+</body>
+</html>
